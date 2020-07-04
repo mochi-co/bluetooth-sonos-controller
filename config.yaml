@@ -1,0 +1,78 @@
+zone: "JonBedroom"
+sonosGateway: "http://localhost:5005/"
+deviceName: "Satechi Media Button Consumer Control"
+
+debug: true
+refreshConfig: 30
+
+connected:
+  - "pause"
+  - "play"
+
+bindings:
+  115: 
+    - path: 
+      - "clearqueue"
+      - "say/stargazing/en-au/10"
+      - "favourite/Stargazing"
+      len: 20
+
+    - path: 
+      - "volume/+5"
+      len: 5
+
+    - path: 
+      - "volume/+3"
+      len: 3
+
+    - path: 
+      - "volume/+1"
+
+  114: 
+    - path: 
+      - "clearqueue"
+      - "say/cosy/en-au/10"
+      - "favourite/Cosy%20Fireplace"
+      len: 20
+
+    - path: 
+      - "volume/-5"
+      len: 5
+
+    - path: 
+      - "volume/-3"
+      len: 3
+
+    - path: 
+      - "volume/-1"
+
+  163: 
+    - path: 
+      - "clearqueue"
+      - "say/classical/en-au/10"
+      - "favourite/Classical"
+      len: 20
+
+    - path: 
+      - "next"
+
+  165: 
+    - path: 
+      - "clearqueue"
+      - "say/zen/en-au/10"
+      - "favourite/Zen"
+      len: 20
+
+    - path: 
+      - "previous"
+
+  164: 
+    - path: 
+      - "clearqueue"
+      - "say/personal mix/en-au/10"
+      - "favourite/Flow,%20your%20personal%20mix"
+      len: 20
+
+    - path: 
+      - "playpause"
+
