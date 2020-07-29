@@ -79,7 +79,7 @@ connect DC:2C:26:BD:DD:9B
 Once it says `Connected`, you can type  `exit` to leave `bluetoothctl`.
 
 ##### Configure the listener
-In this repo you will find an example `config.yml` which contains everything you need to map your new media button to various Sonos features. However, in order to listen to the button, you'll need to tell the listener what the button is called.
+In this repo you will find an example `config.yaml` which contains everything you need to map your new media button to various Sonos features. However, in order to listen to the button, you'll need to tell the listener what the button is called.
 
 Like many bluetooth devices, the Media Button may expose more than one `/dev/input` address. Each of these have slightly different purposes and different names, and you need to know which one to listen on. For Satechi Media button, it's `Satechi Media Button Consumer Control`, however if you need to check, you can use `evtest`:
 
@@ -93,7 +93,7 @@ Like many bluetooth devices, the Media Button may expose more than one `/dev/inp
 
 Since the button uses BLE, you'll need to press it a few times before running `evtest`. You can then enter the index id (0-2, etc) of the input you wish to test. If you press volume+ and it works, and the others don't, that's probably your device.
 
-Once you have the name of your input device, open up your `config.yml`, and set the `deviceName` property, eg:
+Once you have the name of your input device, open up your `config.yaml`, and set the `deviceName` property, eg:
 ```
 zone: "MySonosZone"
 sonosGateway: "http://localhost:5005/"
@@ -101,7 +101,7 @@ deviceName: "Satechi Media Button Consumer Control"
 ```
 
 ##### Map the buttons to Sonos events
-The `config.yml` contains a basic, default configuration which should work with all standard buttons (play/pause, next, prev, vol up, vol down). You can do a lot more with this controller, which is described further down the readme, but for now just familiarise yourself with the options.
+The `config.yaml` contains a basic, default configuration which should work with all standard buttons (play/pause, next, prev, vol up, vol down). You can do a lot more with this controller, which is described further down the readme, but for now just familiarise yourself with the options.
 
 ##### Configure the listener and Sonos API to start on boot
 This is the important one. I looked through lots of different options, but, in the end, the simplest and most reliable was using the `@reboot` parameter in `crontab`.
@@ -128,9 +128,9 @@ First, set the `debug` parameter in your config file to `true`. This will output
 
 This will start outputting an event logs. Press play/pause and you will see the event in the console.
 
-In another window, open up your `config.yml`. You can now edit your config and the listener will reload every (n) seconds. When you are satisfied, you can reboot, or run the command you added to the crontab (eg `sudo /home/pi/Dev/bluetooth-sonos/bluetooth-sonos-controller -config /home/pi/Dev/bluetooth-sonos/config.yaml &`)
+In another window, open up your `config.yaml`. You can now edit your config and the listener will reload every (n) seconds. When you are satisfied, you can reboot, or run the command you added to the crontab (eg `sudo /home/pi/Dev/bluetooth-sonos/bluetooth-sonos-controller -config /home/pi/Dev/bluetooth-sonos/config.yaml &`)
 
-### Understanding config.yml
+### Understanding config.yaml
  The command in`connected` and `bindings` are API paths affixed to the `sonosGateway` address, so if the command is `pause`, then it will call `http://localhost:5005/pause`. 
  
 A full list of API paths can be found on https://github.com/jishi/node-sonos-http-api, and you can use any of them, so get creative!
