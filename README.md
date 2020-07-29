@@ -180,10 +180,10 @@ bindings:
   # held for a second, then the volume is dropped by -5 instead.
   114: # Volume Down keycode
     - path:
-	- "volume/-5" 
+        - "volume/-5" 
       len: 10 
     - path: 
-	- "volume/-2"
+        - "volume/-2"
 
   # Multi-path bindings can also be used to change the currently 
   # playing track. In this case, holding the next button for 3 seconds
