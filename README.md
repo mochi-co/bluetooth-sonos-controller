@@ -40,6 +40,10 @@ We will do three things:
 
 We'll assume that all of this will happen on your Raspberry Pi (or other device you are using).
 
+##### Install Go
+
+	sudo apt-get install golang
+
 ##### Clone the Repo
 	
 	git clone https://github.com/mochi-co/bluetooth-sonos-controller.git
@@ -49,9 +53,6 @@ Build the listener:
 	cd bluetooth-sonos-controller
 	go build -o bluetooth-sonos-controller
 
-##### Install Go
-
-	sudo apt-get install golang
 
 ##### Install Node-Sonos-HTTP-Api
 	git clone https://github.com/jishi/node-sonos-http-api.git
