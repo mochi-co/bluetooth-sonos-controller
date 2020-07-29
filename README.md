@@ -167,7 +167,7 @@ bindings:
   # A basic single path binding
   115: # Volume Up keycode
     - path: 
-	    - "volume/+2" # >> http://localhost:5005/volume/+2
+        - "volume/+2" # >> http://localhost:5005/volume/+2
 
   # A binding can have multiple paths which are triggered depending
   # on how long the button was held. Multiple bindings must be listed
@@ -191,10 +191,10 @@ bindings:
   # Sonos as a favourite. Otherwise it will just skip track.
   163: # Next keycode
     - path: 
-	    - "favourite/Classical"
+        - "favourite/Classical"
       len: 20
     - path: 
-      - "next"
+        - "next"
 
   # As seen in Connected, you can have multiple steps in a single path.
   # These steps will be executed in sequence.
@@ -204,13 +204,13 @@ bindings:
   # track.
   165: # Prev keycode
     - path: 
-	    - "say/calm piano/en-au/10"
-	    - "shuffle/on"
+        - "say/calm piano/en-au/10"
+	- "shuffle/on"
 	- "favourite/Calm Piano"
 	- "shuffle/off"
       len: 20
     - path: 
-      - "previous"
+        - "previous"
 
 ````
 
