@@ -4,7 +4,9 @@ import (
 	"flag"
 	"io/ioutil"
 	"log"
+	"math/rand"
 	"net/http"
+	"strings"
 	"time"
 
 	evdev "github.com/gvalkov/golang-evdev"
@@ -130,12 +132,23 @@ func main() {
 										// If we found a path, loop through all the commands
 										// for the path and send them to the Sonos API gateway.
 										for j := 0; j < len(binding[i].Path); j++ {
-											logOut("API_EVENT", Conf.Gateway+Conf.Zone+"/"+binding[i].Path[j])
-											_, err := http.Get(Conf.Gateway + Conf.Zone + "/" + binding[i].Path[j])
+											path := binding[i].Path[j]
+
+											// If the path starts with a special pipe, pick a random
+											// path from the list. eg. |opt1|opt2|opt3
+											if path[0] == '|' {
+												rand.Seed(time.Now().UnixNano())
+												opts := strings.Split(path, "|")[1:]
+												path = opts[rand.Intn(len(opts))]
+											}
+
+											logOut("API_EVENT", Conf.Gateway+Conf.Zone+"/"+path)
+											_, err := http.Get(Conf.Gateway + Conf.Zone + "/" + path)
 											if err != nil {
 												logOut("API_EVENT_ERR", err.Error())
 											}
 										}
+										break // only take the topmost length
 									}
 								}
 							}
