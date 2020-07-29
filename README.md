@@ -10,7 +10,7 @@ I have a [Satechi Media Button](https://www.amazon.co.uk/Satechi-Bluetooth-Butto
 The purpose of this project is to provide a small, customisable bluetooth listener which can use to interact with your Sonos system (everything from play/pause and volume to playing favourites).
 
 #### Acknowledgements
-Originally when I bought my Satechi Button, I intended to use it with [SvenSommer's BlueSonosButton](https://github.com/SvenSommer/BlueSonosButton). However, there was more customisation I wanted to do, and since I'm better at Go than I am at Python, this project is written in Go. Much of the configuration I learned directly from SvenSommer.
+Originally when I bought my Satechi Button, I intended to use it with [SvenSommer's BlueSonosButton](https://github.com/SvenSommer/BlueSonosButton). However, there was more customisation I wanted to do, and since I'm better at Go than I am at Python, this project is written in Go. Most of the techniques involved I learned directly from SvenSommer's implementation.
 
 #### Caveats
 This is a bit of a quick-and-dirty project to meet a goal. It's not perfect. That said, I've used to every day for a month and it never failed me. Pull requests and issues are welcome to tidy and formalise and add new features!
