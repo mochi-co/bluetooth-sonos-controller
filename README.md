@@ -138,7 +138,7 @@ A full list of API paths can be found on https://github.com/jishi/node-sonos-htt
 ````yaml
 
 # zone is the Sonos zone you wish to control with the remote.
-zone: "JonBedroom"
+zone: "mySonosZone"
 
 # sonosGateway is the address of the Node Sonos API. 
 # Normally you will run this on the same device, but if not you 
