@@ -135,83 +135,83 @@ A full list of API paths can be found on https://github.com/jishi/node-sonos-htt
 
 ````yaml
 
-	# zone is the Sonos zone you wish to control with the remote.
-	zone: "JonBedroom"
+# zone is the Sonos zone you wish to control with the remote.
+zone: "JonBedroom"
 
-	# sonosGateway is the address of the Node Sonos API. 
-	# Normally you will run this on the same device, but if not you 
-	# can change it here.
-	sonosGateway: "http://localhost:5005/"
+# sonosGateway is the address of the Node Sonos API. 
+# Normally you will run this on the same device, but if not you 
+# can change it here.
+sonosGateway: "http://localhost:5005/"
 
-	# deviceName is the name of the input device you found using evtest.
-	deviceName: "Satechi Media Button Consumer Control"
+# deviceName is the name of the input device you found using evtest.
+deviceName: "Satechi Media Button Consumer Control"
 
-	# debug turns logging on and off.
-	debug: true
+# debug turns logging on and off.
+debug: true
 
-	# refreshConfig is the number of seconds between hot-reloads of the 
-	# config file.
-	refreshConfig: 30
+# refreshConfig is the number of seconds between hot-reloads of the 
+# config file.
+refreshConfig: 30
 
-	# connected is the event sequence that occurs when the device 
-	# reconnects. In this case, it pauses for a moment, then plays. 
-	connected:
-	  - "pause"
-	  - "play"
+# connected is the event sequence that occurs when the device 
+# reconnects. In this case, it pauses for a moment, then plays. 
+connected:
+  - "pause"
+  - "play"
 
-	# bindings is the meat of the config and maps key events (refer to the 
-	# event codes output when selecting a device in evtest, or pressing 
-	# buttons when logging).
-	bindings:
-		
-	  # A basic single path binding
-	  115: # Volume Up keycode
-	    - path: 
-		    - "volume/+2" # >> http://localhost:5005/volume/+2
-	
-	  # A binding can have multiple paths which are triggered depending
-	  # on how long the button was held. Multiple bindings must be listed
-	  # in order of longest to shortest (default len being 0). The len
-	  # properties represents the number of keypress events that are 
-	  # triggered during the hold. On the Satechi button, len 20 is 
-	  # about 3 seconds. You will have experiment to find your preferred
-	  # values.
-	  # This binding has two paths, an instant -2, or if the button is
-	  # held for a second, then the volume is dropped by -5 instead.
-	  114: # Volume Down keycode
-	    - path:
-	        - "volume/-5" 
-	      len: 10 
-	    - path: 
-	        - "volume/-2"
-	  
-	  # Multi-path bindings can also be used to change the currently 
-	  # playing track. In this case, holding the next button for 3 seconds
-	  # will play the Deezer Classical station which has been added to my
-	  # Sonos as a favourite. Otherwise it will just skip track.
-	  163: # Next keycode
-	    - path: 
-		    - "favourite/Classical"
-	      len: 20
-	    - path: 
-	      - "next"
-	  
-	  # As seen in Connected, you can have multiple steps in a single path.
-	  # These steps will be executed in sequence.
-	  # The below example will announce the playlist change in an Australian
-	  # accent, then temporarily enable shuffle mode when the favourite 
-	  # playlist is triggered using long play so it always starts on a random
-	  # track.
-	  165: # Prev keycode
-	    - path: 
-		    - "say/calm piano/en-au/10"
-		    - "shuffle/on"
-	        - "favourite/Calm Piano"
-	        - "shuffle/off"
-	      len: 20
-	    - path: 
-	      - "previous"
-	
+# bindings is the meat of the config and maps key events (refer to the 
+# event codes output when selecting a device in evtest, or pressing 
+# buttons when logging).
+bindings:
+
+  # A basic single path binding
+  115: # Volume Up keycode
+    - path: 
+	    - "volume/+2" # >> http://localhost:5005/volume/+2
+
+  # A binding can have multiple paths which are triggered depending
+  # on how long the button was held. Multiple bindings must be listed
+  # in order of longest to shortest (default len being 0). The len
+  # properties represents the number of keypress events that are 
+  # triggered during the hold. On the Satechi button, len 20 is 
+  # about 3 seconds. You will have experiment to find your preferred
+  # values.
+  # This binding has two paths, an instant -2, or if the button is
+  # held for a second, then the volume is dropped by -5 instead.
+  114: # Volume Down keycode
+    - path:
+	- "volume/-5" 
+      len: 10 
+    - path: 
+	- "volume/-2"
+
+  # Multi-path bindings can also be used to change the currently 
+  # playing track. In this case, holding the next button for 3 seconds
+  # will play the Deezer Classical station which has been added to my
+  # Sonos as a favourite. Otherwise it will just skip track.
+  163: # Next keycode
+    - path: 
+	    - "favourite/Classical"
+      len: 20
+    - path: 
+      - "next"
+
+  # As seen in Connected, you can have multiple steps in a single path.
+  # These steps will be executed in sequence.
+  # The below example will announce the playlist change in an Australian
+  # accent, then temporarily enable shuffle mode when the favourite 
+  # playlist is triggered using long play so it always starts on a random
+  # track.
+  165: # Prev keycode
+    - path: 
+	    - "say/calm piano/en-au/10"
+	    - "shuffle/on"
+	- "favourite/Calm Piano"
+	- "shuffle/off"
+      len: 20
+    - path: 
+      - "previous"
+
 ````
 
 There are two special syntax features available in the listener. These are `pipe` syntax, which creates a list which will be randomly selected from, and `len: -1`, which is a bit more experimental. Let's look at how to use them:
