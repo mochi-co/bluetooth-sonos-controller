@@ -1,3 +1,4 @@
+![Sonos Bluetooth Controller using Bluetooth Media Buttons and Raspberry Pi](sonos-satechi.jpeg)
 
 ### Bluetooth Sonos Controller
 #### Control your Sonos speakers with cheap bluetooth controller buttons
