@@ -157,7 +157,7 @@ func main() {
 							// incremental updates for every other tick, such as volume up or down.
 							// Set the length of the path to -1 to trigger this behaviour.
 						} else if keyEvent.Value == 2 { // 2 == Held
-							if binding, ok := Conf.Bindings[int(keyEvent.Code)]; ok && len(binding) == 1 && binding[0].Length == -1 && pressLength%2 == 0 {
+							if binding, ok := Conf.Bindings[int(keyEvent.Code)]; ok && len(binding) == 1 && binding[0].Length == -1 { //&& pressLength%2 == 0 {
 								logOut("CONT_API_EVENT", Conf.Gateway+Conf.Zone+"/"+binding[0].Path[0])
 								_, err := http.Get(Conf.Gateway + Conf.Zone + "/" + binding[0].Path[0])
 								if err != nil {
