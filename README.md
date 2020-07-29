@@ -205,9 +205,9 @@ bindings:
   165: # Prev keycode
     - path: 
         - "say/calm piano/en-au/10"
-	- "shuffle/on"
-	- "favourite/Calm Piano"
-	- "shuffle/off"
+        - "shuffle/on"
+        - "favourite/Calm Piano"
+        - "shuffle/off"
       len: 20
     - path: 
         - "previous"
