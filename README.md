@@ -31,7 +31,7 @@ You will need two things:
 For the purposes of this readme, we'll assume you're using the same.
 
 #### Setup
-We will do three things:
+We will do ~~three~~ five things:
 1. Clone this repo to your device and build the listener.
 2. Install Go on your device.
 3. Install Jishi's amazing [node-sonos-http-api](https://github.com/jishi/node-sonos-http-api).
